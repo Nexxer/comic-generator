@@ -1,13 +1,12 @@
-import React from "react";
 import Header from "./Header/Header";
-import Info from "./Info";
+import Info from "./Info/Info";
 import Cards from "./Cards";
 
 function App() {
   return (
     <div className="">
       <Header />
-      {/*<Info />*/}
+      <Info />
       {/* <Cards/> */}
     </div>
   );

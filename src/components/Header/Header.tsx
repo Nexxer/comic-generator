@@ -18,9 +18,7 @@ function Header() {
               id="btnradio1"
               autoComplete="off"
             />
-            <label className="" htmlFor="btnradio1">
-              Создать
-            </label>
+            <label htmlFor="btnradio1">Создать</label>
           </li>
 
           <li className="header__list_item">
@@ -31,9 +29,7 @@ function Header() {
               id="btnradio2"
               autoComplete="off"
             />
-            <label className="" htmlFor="btnradio2">
-              Сгенерировать
-            </label>
+            <label htmlFor="btnradio2">Сгенерировать</label>
           </li>
 
           <li className="header__list_item">
@@ -45,13 +41,9 @@ function Header() {
               autoComplete="off"
               defaultChecked
             />
-            <label className="" htmlFor="btnradio3">
-              Инфо
-            </label>
+            <label htmlFor="btnradio3">Инфо</label>
           </li>
         </ul>
-
-        <div className="" role="group" aria-label="Basic radio toggle button group"></div>
       </nav>
     </header>
   );
