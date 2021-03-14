@@ -10,6 +10,8 @@
 
 # production
 /build
+/src/cards
+/.idea
 
 # misc
 .DS_Store

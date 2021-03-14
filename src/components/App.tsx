@@ -1,14 +1,14 @@
-import React from 'react';
-import Header from "./components/Header";
-import Info from "./components/Info";
-import Cards from "./components/Cards";
+import React from "react";
+import Header from "./Header/Header";
+import Info from "./Info";
+import Cards from "./Cards";
 
 function App() {
   return (
-  <div className="container bg-light pt-3 shadow min-vh-100">
-       <Header />
-      <Info />
-      <Cards/>
+    <div className="">
+      <Header />
+      {/*<Info />*/}
+      {/* <Cards/> */}
     </div>
   );
 }

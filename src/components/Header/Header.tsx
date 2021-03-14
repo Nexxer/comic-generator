@@ -1,28 +1,60 @@
-import dangerImg from './../images/18plus.png';
+import "./Header.css";
 
 function Header() {
-    return (
-    <header className="border-secondary border-bottom mb-4">
-        <nav className="navbar navbar-expand-lg navbar-light">
-            <div className="container-fluid">
-                <h1 className="navbar-brand m-0 p-0 text-uppercase fs-1">
-                    <img src={dangerImg} alt="Danger! Only 18+" className="w-auto h-auto me-3"/>
-                    Генератор коммиксов
-                </h1>
-            </div>
-            <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off"/>
-                <label className="btn  btn-outline-secondary fs-4" htmlFor="btnradio1">Создать</label>
+  return (
+    <header className="header">
+      <h1 className="header__title">
+        <div className="header__icon">18+</div>
+        Генератор коммиксов
+      </h1>
 
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off"/>
-                <label className="btn  btn-outline-secondary fs-4" htmlFor="btnradio2">Сгенерировать</label>
+      <nav className="header__nav">
+        <ul className="header__list">
+          <li className="header__list_item">
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio"
+              id="btnradio1"
+              autoComplete="off"
+            />
+            <label className="" htmlFor="btnradio1">
+              Создать
+            </label>
+          </li>
 
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" defaultChecked/>
-                <label className="btn  btn-outline-secondary fs-4" htmlFor="btnradio3">Инфо</label>
-            </div>
-        </nav>
+          <li className="header__list_item">
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio"
+              id="btnradio2"
+              autoComplete="off"
+            />
+            <label className="" htmlFor="btnradio2">
+              Сгенерировать
+            </label>
+          </li>
+
+          <li className="header__list_item">
+            <input
+              type="radio"
+              className="btn-check"
+              name="btnradio"
+              id="btnradio3"
+              autoComplete="off"
+              defaultChecked
+            />
+            <label className="" htmlFor="btnradio3">
+              Инфо
+            </label>
+          </li>
+        </ul>
+
+        <div className="" role="group" aria-label="Basic radio toggle button group"></div>
+      </nav>
     </header>
-)
+  );
 }
 
 export default Header;

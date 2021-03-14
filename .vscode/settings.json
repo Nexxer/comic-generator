@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSave": true,
+  "diffEditor.codeLens": true,
+  "prettier.jsxBracketSameLine": true,
+  "prettier.printWidth": 100
+}

@@ -1,0 +1,91 @@
+.header {
+  background-image: url("./../../images/bg-meme.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 10px;
+  border-bottom: 1px solid #666;
+  margin-bottom: 15px;
+}
+
+.header__title {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.header__icon {
+  padding: 5px;
+  border: 3px solid #000;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  animation: animate 8s linear infinite;
+}
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+
+.header__nav {
+  margin: 0;
+}
+.header__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+.header__list_item {
+}
+
+.header__list_item input {
+  display: none;
+}
+
+.header__list_item label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 0px 15px;
+  line-height: 34px;
+  border: 1px solid #999;
+  user-select: none;
+}
+
+.header__list_item input[type="radio"]:checked + label {
+  background: #a8a8a8;
+}
+
+.header__list_item label:hover {
+  color: #666;
+}
+
+ul li:first-child label {
+  border-radius: 10px 0 0 10px;
+}
+
+ul li:last-child label {
+  border-radius: 0 10px 10px 0;
+}
+
+@media screen and (max-width: 795px) {
+  .header {
+    background-image: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .header {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+}
