@@ -1,0 +1,32 @@
+.cards {
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 200px));
+  justify-content: center;
+  gap: 10px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background-color: #fff;
+}
+.card__image {
+  width: 100%;
+  display: block;
+}
+
+.card__info {
+  display: flex;
+  justify-content: space-evenly;
+  color: rgb(122, 122, 122);
+  font-size: 0.8rem;
+}
+.card__number {
+}
+.card__id {
+  text-align: center;
+}
