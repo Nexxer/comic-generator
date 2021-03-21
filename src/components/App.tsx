@@ -1,6 +1,6 @@
 import Header from "./Header/Header";
 import Info from "./Info/Info";
-import Cards from "./Cards/Cards.jsx";
+import Cards from "./Cards/Cards";
 import { useState } from "react";
 
 function App() {

@@ -1,0 +1,72 @@
+.cards {
+  padding: 2% 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+  justify-content: center;
+  gap: 10px;
+}
+
+.generator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.generator__title {
+  font-size: 1.7rem;
+  text-align: center;
+}
+.generator__input {
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  border-radius: 50%;
+  outline: none;
+  font-size: 1rem;
+}
+
+.generator__input::-webkit-outer-spin-button,
+.generator__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.generator__input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.generator__button {
+  font-size: 2rem;
+}
+.card {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background-color: #fff;
+}
+.card__image {
+  width: 100%;
+  display: block;
+}
+
+.card__info {
+  display: flex;
+  justify-content: space-evenly;
+  color: rgb(122, 122, 122);
+  font-size: 0.8rem;
+}
+.card__number {
+}
+.card__id {
+  text-align: center;
+}
+
+@media screen and (max-width: 765px) {
+  .cards {
+    padding: 1% 2%;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 149px));
+    gap: 5px;
+  }
+}
