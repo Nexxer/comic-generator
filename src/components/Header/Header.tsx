@@ -1,6 +1,8 @@
 import "./Header.css";
 
-function Header() {
+function Header({click}:any) {
+
+
   return (
     <header className="header">
       <h1 className="header__title">
@@ -18,7 +20,9 @@ function Header() {
               id="btnradio1"
               autoComplete="off"
             />
-            <label htmlFor="btnradio1">Создать</label>
+            <label htmlFor="btnradio1" onClick={click}>
+              Создать
+            </label>
           </li>
 
           <li className="header__list_item">
@@ -29,7 +33,9 @@ function Header() {
               id="btnradio2"
               autoComplete="off"
             />
-            <label htmlFor="btnradio2">Сгенерировать</label>
+            <label htmlFor="btnradio2" onClick={click}>
+              Сгенерировать
+            </label>
           </li>
 
           <li className="header__list_item">
@@ -41,7 +47,9 @@ function Header() {
               autoComplete="off"
               defaultChecked
             />
-            <label htmlFor="btnradio3">Инфо</label>
+            <label htmlFor="btnradio3" onClick={click}>
+              Инфо
+            </label>
           </li>
         </ul>
       </nav>
