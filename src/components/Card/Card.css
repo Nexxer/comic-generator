@@ -3,6 +3,7 @@
   width: 100%;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border: 1px solid #000;
   overflow: hidden;
   background-color: #fff;
 }
@@ -16,9 +17,4 @@
   justify-content: space-evenly;
   color: rgb(122, 122, 122);
   font-size: 0.8rem;
-}
-.card__number {
-}
-.card__id {
-  text-align: center;
 }

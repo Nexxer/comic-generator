@@ -1,4 +1,5 @@
 import "./Info.css";
+import { minCardsGenerate, maxCardsGenerate } from "./../../const/const";
 
 function Info() {
   return (
@@ -13,13 +14,12 @@ function Info() {
       </div>
       <div>
         <h3 className="info__title">Информация о проекте:</h3>
-        <p className="info__text">проект создан на ReactJS, TypeScript и Bootstrap.</p>
+        <p className="info__text">проект создан на ReactJS и TypeScript.</p>
       </div>
       <div>
         <h3 className="info__title">Описание:</h3>
         <p className="info__text">
-          на данной странице можно создавать свой комикс или генерировать случайный (от 3 до 12
-          карточек), с возсожностью сохранения на свой ПК
+          {`на данной странице можно создавать свой комикс или генерировать случайный (от ${minCardsGenerate} до ${maxCardsGenerate}          карточек), с возсожностью сохранения на свой ПК`}
         </p>
       </div>
       <div>
@@ -37,7 +37,7 @@ function Info() {
         <h3 className="info__title">Для генерации случайного комикса:</h3>
         <ul className="info__list">
           <li>выберите в меню "Сгенерировать"</li>
-          <li>введите количество желаемых карточек от 3 до 12</li>
+          <li>{`введите количество желаемых карточек от ${minCardsGenerate} до ${maxCardsGenerate}`}</li>
           <li>Нажмите кнопку "Создать"</li>
         </ul>
 

@@ -1,8 +1,6 @@
 import "./Header.css";
 
-function Header({click}:any) {
-
-
+function Header({ click }: any) {
   return (
     <header className="header">
       <h1 className="header__title">

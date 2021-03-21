@@ -1,9 +1,10 @@
 .cards {
-  padding: 2% 5%;
+  padding-top: 2%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
   justify-content: center;
   gap: 10px;
+  min-height: 230px;
 }
 
 .generator {
@@ -15,6 +16,8 @@
 .generator__title {
   font-size: 1.7rem;
   text-align: center;
+  display: flex;
+  align-items: center;
 }
 .generator__input {
   height: 2rem;
@@ -23,6 +26,7 @@
   border-radius: 50%;
   outline: none;
   font-size: 1rem;
+  margin-left: 20px;
 }
 
 .generator__input::-webkit-outer-spin-button,
@@ -38,29 +42,14 @@
 .generator__button {
   font-size: 2rem;
 }
-.card {
-  position: relative;
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  background-color: #fff;
-}
-.card__image {
-  width: 100%;
-  display: block;
-}
 
-.card__info {
-  display: flex;
-  justify-content: space-evenly;
-  color: rgb(122, 122, 122);
-  font-size: 0.8rem;
+.cards__button-add {
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s linear;
 }
-.card__number {
-}
-.card__id {
-  text-align: center;
+.cards__button-add:hover {
+  border-color: rgba(49, 197, 4, 0.829);
+  box-shadow: 0 0 5px rgba(34, 145, 0, 0.5);
 }
 
 @media screen and (max-width: 765px) {
@@ -68,5 +57,11 @@
     padding: 1% 2%;
     grid-template-columns: repeat(auto-fit, minmax(100px, 149px));
     gap: 5px;
+  }
+  .generator__title {
+    flex-direction: column;
+  }
+  .generator__input {
+    margin: 0.8rem 0;
   }
 }

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Card from "./../Card/Card";
 import "./Cards.css";
+import { minCardsGenerate, maxCardsGenerate } from "./../../const/const";
 
-function Cards() {
-  const [numberOfCards, setNumberOfCards] = useState<number>(3);
-  const [arrCards, setArrCards] = useState({ cards: [] as any });
+function Cards({ manualCreate, onOpenPopup }: any) {
+  const [numberOfCards, setNumberOfCards] = useState<number>(minCardsGenerate);
+  const [arrCards, setArrCards] = useState([] as any);
+  const [arrManualCards, setArrManualCards] = useState([] as any);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNumberOfCards(event.target.valueAsNumber);
@@ -17,35 +19,46 @@ function Cards() {
       const idCard = Math.floor(Math.random() * Math.floor(301));
       arr.push(idCard);
     }
-    setNumberOfCards(3);
-    return setArrCards({ cards: arr });
+    setNumberOfCards(minCardsGenerate);
+    return setArrCards(arr);
   };
 
   return (
     <section>
-      <form className="generator" onSubmit={submitGenerate}>
-        <label className="generator__title">
-          Введите количество карт для генерирования (от 3 до 15)
-          <input
-            type="number"
-            name="maxCards"
-            className="generator__input"
-            placeholder="Сюда"
-            min="3"
-            max="15"
-            value={numberOfCards}
-            onChange={handleChange}
-          />
-        </label>
-        <button className="generator__button" type="submit">
-          Генерировать
-        </button>
-      </form>
-      {arrCards.cards.length > 2 ? (
-        <div className="cards">
-          <Card lol={arrCards.cards} />
-        </div>
+      {!manualCreate ? (
+        <form className="generator" onSubmit={submitGenerate}>
+          <label className="generator__title">
+            {` Введите количество карт для генерирования (от ${minCardsGenerate} до ${maxCardsGenerate})`}
+            <input
+              type="number"
+              name="maxCardsGenerate"
+              className="generator__input"
+              placeholder="Сюда"
+              min={minCardsGenerate}
+              max={maxCardsGenerate}
+              value={numberOfCards}
+              onChange={handleChange}
+            />
+          </label>
+          <button className="generator__button" type="submit">
+            Генерировать
+          </button>
+        </form>
       ) : null}
+      <div className="cards">
+        {manualCreate ? (
+          <>
+            <Card cardsArr={arrManualCards} />
+            <button className="card cards__button-add" onClick={onOpenPopup}>
+              +
+            </button>
+          </>
+        ) : (
+          <>
+            <Card cardsArr={arrCards} />
+          </>
+        )}
+      </div>
     </section>
   );
 }
