@@ -5,6 +5,7 @@
   justify-content: center;
   gap: 10px;
   min-height: 230px;
+  grid-auto-rows: 1fr
 }
 
 .generator {
@@ -44,6 +45,8 @@
 }
 
 .cards__button-add {
+  font-size: 2rem;
+  color: rgb(100, 100, 100);
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s linear;
 }

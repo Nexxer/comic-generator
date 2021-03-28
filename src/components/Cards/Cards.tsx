@@ -1,28 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "./../Card/Card";
 import "./Cards.css";
 import { minCardsGenerate, maxCardsGenerate } from "./../../const/const";
 
-function Cards({ manualCreate, onOpenPopup }: any) {
-  const [numberOfCards, setNumberOfCards] = useState<number>(minCardsGenerate);
-  const [arrCards, setArrCards] = useState([] as any);
-  const [arrManualCards, setArrManualCards] = useState([] as any);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNumberOfCards(event.target.valueAsNumber);
-  };
-
-  const submitGenerate = (e: React.FormEvent) => {
-    const arr: number[] = [];
-    e.preventDefault();
-    for (let i = 0; i < numberOfCards; i++) {
-      const idCard = Math.floor(Math.random() * Math.floor(301));
-      arr.push(idCard);
-    }
-    setNumberOfCards(minCardsGenerate);
-    return setArrCards(arr);
-  };
-
+function Cards({
+  manualCreate,
+  onOpenPopup,
+  manualCreateArr,
+  autoCreateArr,
+  submitGenerate,
+  handleChange,
+  numberOfCards,
+}: any) {
   return (
     <section>
       {!manualCreate ? (
@@ -48,14 +37,14 @@ function Cards({ manualCreate, onOpenPopup }: any) {
       <div className="cards">
         {manualCreate ? (
           <>
-            <Card cardsArr={arrManualCards} />
+            <Card cardsArr={manualCreateArr} scaleCard={false} />
             <button className="card cards__button-add" onClick={onOpenPopup}>
-              +
+              Добавить карточку
             </button>
           </>
         ) : (
           <>
-            <Card cardsArr={arrCards} />
+            <Card cardsArr={autoCreateArr} />
           </>
         )}
       </div>

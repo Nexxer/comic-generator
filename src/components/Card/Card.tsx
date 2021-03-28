@@ -1,17 +1,37 @@
-import React from "react";
+import { useState } from "react";
 import "./Card.css";
+const uniqid = require("uniqid");
 
-function Card({ cardsArr }: any) {
+
+//TODO доделать ошибку добавления
+function Card({ cardsArr, scaleCard, addCard, failAdd, manualCreateArr }: any) {
+
+  const [errorAdd, setErrorAdd] = useState<boolean>(false)
+
+  function clickCard(card: any) {
+    if (manualCreateArr) {
+      if (manualCreateArr.includes(card)) {
+        return setErrorAdd(true);
+      }
+      addCard(card);
+    }
+  }
+
   return (
     <>
-      {cardsArr.map((card: number, index: any) => {
+      {cardsArr.map((card: number) => {
+        const key = uniqid();
         return (
-          <div className="card" key={index}>
+          <div className={`card ${scaleCard ? "card_scale" : ""} ${errorAdd ? "card_error" : ""}`} key={key}>
             <div className="card__info">
-              <span>{`№${index + 1}`}</span>
               <span>{`id: ${card}`}</span>
             </div>
-            <img src={`/cards/${card}.jpg`} alt="карточка" className="card__image" />
+            <img
+              src={`/cards/${card}.jpg`}
+              alt="карточка"
+              className="card__image"
+              onClick={()=>clickCard(card)}
+            />
           </div>
         );
       })}
