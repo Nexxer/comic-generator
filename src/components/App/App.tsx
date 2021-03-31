@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Header from "../Header/Header";
 import Info from "../Info/Info";
 import Cards from "../Cards/Cards";
@@ -41,6 +41,21 @@ function App() {
   function toglePopup() {
     setShowPopup(!showPopup);
   }
+  //закрытие попапа по клику на оверлей
+const handleOverlayClosePopup = useCallback((e) => {
+    if (e.target.classList.contains('popup')) {
+      setShowPopup(false);
+    }
+}, []);
+
+  //закрытие попапа по Esc
+   useEffect(() => {
+     window.addEventListener("keyup", (e) => {
+       if (e.key === "Escape") {
+         setShowPopup(false);
+       }
+     });
+   }, []);
 
   //функция определяет какое меню отображать и возвращает поле Card с требуемыми значениями
   //TODO убрать console
@@ -90,6 +105,7 @@ function App() {
           addCard={addCard}
           failAdd={failAdd}
           manualCreateArr={manualCreateArr}
+          onOverlayAndEscClick={handleOverlayClosePopup}
         />
       ) : null}
     </>
