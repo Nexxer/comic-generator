@@ -19,7 +19,7 @@
   border: 1px solid black;
   border-radius: 5px;
   width: 80%;
-  height: 80%;
+  height: 90%;
 
   overflow: auto;
 }
@@ -83,7 +83,6 @@
 }
 
 .pagination-item:hover {
-  transform: scale(1.2);
   border-color: black;
   background-color: rgba(50, 150, 0, 0.4);
 }
@@ -101,6 +100,7 @@
   border: 1px solid rgb(128, 128, 128);
 }
 .pagination-link {
+  display: block;
   outline: none;
 }
 .pagination-item_break {
