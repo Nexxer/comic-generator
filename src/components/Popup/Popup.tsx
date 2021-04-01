@@ -1,26 +1,42 @@
 import Card from "../Card/Card";
 import "./Popup.css";
-import { maxCardsInPopup } from "./../../const/const";
+import { maxCardsInPopup, totalCards } from "./../../const/const";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
 
 function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEscClick }: any) {
   const [currentPage, setCurrentPage] = useState<number>(0);
   let allCard: any[] = [];
-  const pageCount: number = 10;
+  let subArray: any[] = [];
 
-  function pageChangeHandler({ selected }: any) {
-    setCurrentPage(selected);
-  }
-
-  //Вывод всех имеющихся карт
+  //Сбор всех имеющихся карт
   //TODO добавить пангинацию
   (function autoGenerateAllCardsArr() {
-    for (let i = 0; i < maxCardsInPopup; i++) {
+    for (let i = 0; i < totalCards; i++) {
       allCard.push(i + 1);
     }
     return allCard;
   })();
+
+  let maxPageCount = 1;
+
+  if (allCard.length % maxCardsInPopup) {
+    maxPageCount = Math.floor(allCard.length / maxCardsInPopup) + 1;
+  } else {
+    maxPageCount = allCard.length / maxCardsInPopup;
+  }
+  console.log(maxPageCount);
+
+  (function createSubArray(totalArr: any[]) {
+    for (let i = 0; i < Math.ceil(totalArr.length / maxCardsInPopup); i++) {
+      subArray[i] = totalArr.slice(i * maxCardsInPopup, i * maxCardsInPopup + maxCardsInPopup);
+    }
+    return subArray;
+  })(allCard);
+
+  function pageChangeHandler({ selected }: any) {
+    setCurrentPage(selected);
+  }
 
   return (
     <div className="popup" onClick={onOverlayAndEscClick}>
@@ -31,7 +47,7 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
           nextLabel={">"}
           breakLabel={"..."}
           breakClassName={"pagination-item_break"}
-          pageCount={pageCount}
+          pageCount={maxPageCount}
           marginPagesDisplayed={1}
           pageRangeDisplayed={3}
           onPageChange={pageChangeHandler}
@@ -47,7 +63,7 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
         />
         <div className="popup__card-choice cards">
           <Card
-            cardsArr={allCard}
+            cardsArr={subArray[currentPage]}
             scaleCard={true}
             addCard={addCard}
             failAdd={failAdd}

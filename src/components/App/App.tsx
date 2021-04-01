@@ -93,8 +93,6 @@ const handleOverlayClosePopup = useCallback((e) => {
     }
   }
 
-
-
   return (
     <>
       <Header click={click} />
