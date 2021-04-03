@@ -24,7 +24,6 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
   } else {
     maxPageCount = allCard.length / maxCardsInPopup;
   }
-
   //Функция разбивки целого массива на подмасивы
   (function createSubArray(totalArr: any[]) {
     for (let i = 0; i < Math.ceil(totalArr.length / maxCardsInPopup); i++) {
@@ -73,6 +72,13 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
               />
             );
           })}
+          <Card
+            cardsArr={subArray[currentPage]}
+            scaleCard={true}
+            addCard={addCard}
+            failAdd={failAdd}
+            manualCreateArr={manualCreateArr}
+          />
         </div>
         <button className="popup__button-close" onClick={onClosePopup} />
       </div>
