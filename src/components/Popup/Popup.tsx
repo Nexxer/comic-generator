@@ -3,6 +3,7 @@ import "./Popup.css";
 import { maxCardsInPopup, totalCards } from "./../../const/const";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
+const uniqid = require("uniqid");
 
 function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEscClick }: any) {
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -23,7 +24,6 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
   } else {
     maxPageCount = allCard.length / maxCardsInPopup;
   }
-  console.log(maxPageCount);
 
   //Функция разбивки целого массива на подмасивы
   (function createSubArray(totalArr: any[]) {
@@ -61,13 +61,18 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
           nextLinkClassName="pagination-link"
         />
         <div className="popup__card-choice cards">
-          <Card
-            cardsArr={subArray[currentPage]}
-            scaleCard={true}
-            addCard={addCard}
-            failAdd={failAdd}
-            manualCreateArr={manualCreateArr}
-          />
+          {subArray[currentPage].map((card: number) => {
+            return (
+              <Card
+                scaleCard={true}
+                card={card}
+                key={uniqid()}
+                addCard={addCard}
+                failAdd={failAdd}
+                manualCreateArr={manualCreateArr}
+              />
+            );
+          })}
         </div>
         <button className="popup__button-close" onClick={onClosePopup} />
       </div>
