@@ -7,7 +7,7 @@ function Card({ card, scaleCard = false, addCard, manualCreateArr = [] }: any) {
 
   function handleClickCard(idCard: number) {
     if (scaleCard) {
-      return addCard(card);
+      return addCard(idCard);
     }
   }
   return (
