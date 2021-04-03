@@ -20,8 +20,7 @@ function App() {
   };
 
   //генерирование случайных карт, в количестве введеных в handleChange
-
-  const submitGenerate = (e: React.FormEvent) => {
+  function submitGenerate(e: React.FormEvent) {
     e.preventDefault();
     let newArr: any[] = [];
     for (let i = 0; i < numberOfCards; i++) {
@@ -30,9 +29,9 @@ function App() {
     }
     setNumberOfCards(minCardsGenerate);
     return setAutoCreateArr(newArr);
-  };
+  }
 
-  //определение элемента меню
+  //определение выбранного элемента меню
   function click(e: any) {
     setItemMenu(e.target.innerText);
   }
@@ -42,25 +41,23 @@ function App() {
     setShowPopup(!showPopup);
   }
   //закрытие попапа по клику на оверлей
-const handleOverlayClosePopup = useCallback((e) => {
-    if (e.target.classList.contains('popup')) {
+  const handleOverlayClosePopup = useCallback((e) => {
+    if (e.target.classList.contains("popup")) {
       setShowPopup(false);
     }
-}, []);
+  }, []);
 
   //закрытие попапа по Esc
-   useEffect(() => {
-     window.addEventListener("keyup", (e) => {
-       if (e.key === "Escape") {
-         setShowPopup(false);
-       }
-     });
-   }, []);
+  useEffect(() => {
+    window.addEventListener("keyup", (e) => {
+      if (e.key === "Escape") {
+        setShowPopup(false);
+      }
+    });
+  }, []);
 
   //функция определяет какое меню отображать и возвращает поле Card с требуемыми значениями
-  //TODO убрать console
   function setMenuDisplay() {
-    console.log("RENDER SET MENU");
     switch (itemMenu) {
       case "Создать":
         return (
@@ -82,14 +79,14 @@ const handleOverlayClosePopup = useCallback((e) => {
   }
 
   //добавление карточки из попапа в комикс
-  function addCard(e: number, key: any) {
+  function addCard(e: number) {
     if (showPopup) {
       if (!manualCreateArr.includes(e)) {
-        setManualCreateArr([...manualCreateArr, e]);
-        return console.log(e + "  " + key);
+        return setManualCreateArr([...manualCreateArr, e]);
+      } else {
+        console.log("WOWOWO");
+        return setFailAdd(true);
       }
-      setFailAdd(true);
-      return alert("Уже имеется");
     }
   }
 

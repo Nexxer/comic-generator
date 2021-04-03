@@ -40,8 +40,6 @@ function Info() {
           <li>{`введите количество желаемых карточек от ${minCardsGenerate} до ${maxCardsGenerate}`}</li>
           <li>Нажмите кнопку "Создать"</li>
         </ul>
-
-        {/*!TODO добавить описание сохранения*/}
       </div>
     </section>
   );

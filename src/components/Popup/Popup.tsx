@@ -3,14 +3,15 @@ import "./Popup.css";
 import { maxCardsInPopup, totalCards } from "./../../const/const";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
+const uniqid = require("uniqid");
 
 function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEscClick }: any) {
   const [currentPage, setCurrentPage] = useState<number>(0);
   let allCard: any[] = [];
   let subArray: any[] = [];
+  let maxPageCount: number = 1;
 
   //Сбор всех имеющихся карт
-  //TODO добавить пангинацию
   (function autoGenerateAllCardsArr() {
     for (let i = 0; i < totalCards; i++) {
       allCard.push(i + 1);
@@ -18,15 +19,12 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
     return allCard;
   })();
 
-  let maxPageCount = 1;
-
   if (allCard.length % maxCardsInPopup) {
     maxPageCount = Math.floor(allCard.length / maxCardsInPopup) + 1;
   } else {
     maxPageCount = allCard.length / maxCardsInPopup;
   }
-  console.log(maxPageCount);
-
+  //Функция разбивки целого массива на подмасивы
   (function createSubArray(totalArr: any[]) {
     for (let i = 0; i < Math.ceil(totalArr.length / maxCardsInPopup); i++) {
       subArray[i] = totalArr.slice(i * maxCardsInPopup, i * maxCardsInPopup + maxCardsInPopup);
@@ -62,6 +60,18 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
           nextLinkClassName="pagination-link"
         />
         <div className="popup__card-choice cards">
+          {subArray[currentPage].map((card: number) => {
+            return (
+              <Card
+                scaleCard={true}
+                card={card}
+                key={uniqid()}
+                addCard={addCard}
+                failAdd={failAdd}
+                manualCreateArr={manualCreateArr}
+              />
+            );
+          })}
           <Card
             cardsArr={subArray[currentPage]}
             scaleCard={true}
