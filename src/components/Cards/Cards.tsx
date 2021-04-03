@@ -1,6 +1,7 @@
 import Card from "./../Card/Card";
 import "./Cards.css";
 import { minCardsGenerate, maxCardsGenerate } from "./../../const/const";
+const uniqid = require("uniqid");
 
 function Cards({
   manualCreate,
@@ -36,14 +37,19 @@ function Cards({
       <div className="cards">
         {manualCreate ? (
           <>
-            <Card cardsArr={manualCreateArr} scaleCard={false} />
+            {manualCreateArr.map((card: number) => {
+              return <Card scaleCard={false} card={card} key={uniqid()} />;
+            })}
+
             <button className="card cards__button-add" onClick={onOpenPopup}>
               Добавить карточку
             </button>
           </>
         ) : (
           <>
-            <Card cardsArr={autoCreateArr} />
+            {autoCreateArr.map((card: number) => {
+              return <Card scaleCard={false} card={card} key={uniqid()} />;
+            })}
           </>
         )}
       </div>
