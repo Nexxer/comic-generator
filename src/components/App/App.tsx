@@ -84,7 +84,6 @@ function App() {
       if (!manualCreateArr.includes(e)) {
         return setManualCreateArr([...manualCreateArr, e]);
       } else {
-        console.log("WOWOWO");
         return setFailAdd(true);
       }
     }

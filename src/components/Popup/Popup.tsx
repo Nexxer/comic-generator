@@ -72,13 +72,6 @@ function Popup({ onClosePopup, addCard, failAdd, manualCreateArr, onOverlayAndEs
               />
             );
           })}
-          <Card
-            cardsArr={subArray[currentPage]}
-            scaleCard={true}
-            addCard={addCard}
-            failAdd={failAdd}
-            manualCreateArr={manualCreateArr}
-          />
         </div>
         <button className="popup__button-close" onClick={onClosePopup} />
       </div>

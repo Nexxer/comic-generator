@@ -1,6 +1,8 @@
 import "./Card.css";
 
 function Card({ card, scaleCard = false, addCard, manualCreateArr = [] }: any) {
+  const filePath = require(`./../../images/cards/${card}.jpg`);
+
   function checkCardinInCreatedArr(number: number) {
     return manualCreateArr.includes(number);
   }
@@ -19,7 +21,7 @@ function Card({ card, scaleCard = false, addCard, manualCreateArr = [] }: any) {
         <span>{`id: ${card}`}</span>
       </div>
       <img
-        src={`/cards/${card}.jpg`}
+        src={filePath.default}
         alt="карточка"
         className="card__image"
         onClick={() => handleClickCard(card)}
