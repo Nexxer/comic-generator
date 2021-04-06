@@ -11,6 +11,7 @@ function Cards({
   submitGenerate,
   handleChange,
   numberOfCards,
+  deleteCard,
 }: any) {
   return (
     <section>
@@ -38,7 +39,7 @@ function Cards({
         {manualCreate ? (
           <>
             {manualCreateArr.map((card: number) => {
-              return <Card scaleCard={false} card={card} key={uniqid()} />;
+              return <Card scaleCard={false} card={card} key={uniqid()} deleteCard={deleteCard} />;
             })}
 
             <button className="card cards__button-add" onClick={onOpenPopup}>
@@ -48,7 +49,7 @@ function Cards({
         ) : (
           <>
             {autoCreateArr.map((card: number) => {
-              return <Card scaleCard={false} card={card} key={uniqid()} />;
+              return <Card scaleCard={false} card={card} key={uniqid()} deleteCard={deleteCard} />;
             })}
           </>
         )}

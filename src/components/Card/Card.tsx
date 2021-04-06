@@ -1,6 +1,6 @@
 import "./Card.css";
 
-function Card({ card, scaleCard = false, addCard, manualCreateArr = [] }: any) {
+function Card({ card, scaleCard = false, addCard, manualCreateArr = [], deleteCard }: any) {
   const filePath = require(`./../../images/cards/${card}.jpg`);
 
   function checkCardinInCreatedArr(number: number) {
@@ -12,14 +12,18 @@ function Card({ card, scaleCard = false, addCard, manualCreateArr = [] }: any) {
       return addCard(idCard);
     }
   }
+  
   return (
     <div
       className={`card ${scaleCard ? "card_scale" : ""} ${
-        checkCardinInCreatedArr(card) ? "card_error" : ""
+        checkCardinInCreatedArr(card) ? "card_message" : ""
       }`}>
       <div className="card__info">
         <span>{`id: ${card}`}</span>
       </div>
+      {scaleCard ? null : (
+        <button className="card__button-delete" onClick={() => deleteCard(card)} />
+      )}
       <img
         src={filePath.default}
         alt="карточка"

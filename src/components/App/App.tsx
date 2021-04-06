@@ -61,7 +61,12 @@ function App() {
     switch (itemMenu) {
       case "Создать":
         return (
-          <Cards manualCreate={true} onOpenPopup={toglePopup} manualCreateArr={manualCreateArr} />
+          <Cards
+            manualCreate={true}
+            onOpenPopup={toglePopup}
+            manualCreateArr={manualCreateArr}
+            deleteCard={deleteCard}
+          />
         );
       case "Сгенерировать":
         return (
@@ -71,6 +76,7 @@ function App() {
             submitGenerate={submitGenerate}
             handleChange={handleChange}
             numberOfCards={numberOfCards}
+            deleteCard={deleteCard}
           />
         );
       default:
@@ -86,6 +92,25 @@ function App() {
       } else {
         return setFailAdd(true);
       }
+    }
+  }
+
+  //удаление карточки из комикса
+  function deleteCard(idCard: number) {
+    console.log("WOW Delete" + idCard + "  " + itemMenu);
+    switch (itemMenu) {
+      case "Создать":
+        return setManualCreateArr(
+          manualCreateArr.filter(function (item: any) {
+            return item !== idCard;
+          })
+        );
+      case "Сгенерировать":
+        return setAutoCreateArr(
+          autoCreateArr.filter(function (item: any) {
+            return item !== idCard;
+          })
+        );
     }
   }
 

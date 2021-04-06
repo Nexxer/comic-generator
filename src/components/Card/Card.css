@@ -29,9 +29,10 @@
   border-color: greenyellow;
 }
 
-.card_error {
+.card_message {
+  font-size: 3rem;
 }
-.card_error::before {
+.card_message::before {
   content: "Вы использовали данную карточку";
   position: absolute;
   top: 0;
@@ -42,5 +43,39 @@
   width: 100%;
   height: 100%;
   background-color: rgba(8, 208, 51, 0.86);
-  font-size: 3rem;
+}
+
+.card__button-delete {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 2rem;
+  width: 2rem;
+  background-color: #000;
+  background-image: url("./../../images/DeleteIcon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .card_message {
+    font-size: 2rem;
+  }
+  .card__button-delete {
+    top: 5px;
+    right: 5px;
+    opacity: 0.2;
+
+  }
+}
+.card:hover .card__button-delete {
+  opacity: 1;
+}
+
+.card__button-delete:hover {
+  background-color: red;
 }
